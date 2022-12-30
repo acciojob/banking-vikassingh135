@@ -1,5 +1,6 @@
 package com.driver;
 
+import com.driver.Exceptions.Insufficient_funds;
 import com.driver.Exceptions.max_withdraw_limit_exceeded;
 
 public class SavingsAccount extends BankAccount {
@@ -31,6 +32,7 @@ public class SavingsAccount extends BankAccount {
         this.maxWithdrawalLimit = maxWithdrawalLimit;
     }
 
+    @Override
     public void withdraw(double amount) throws Exception {
         // Might throw the following errors:
         // 1. "Maximum Withdraw Limit Exceed" : If the amount exceeds maximum withdrawal limit
@@ -38,7 +40,9 @@ public class SavingsAccount extends BankAccount {
         if (amount > maxWithdrawalLimit) {
             throw new max_withdraw_limit_exceeded();
         }
-        withdraw(amount);
+        if(this.getBalance() - amount < this.getMinBalance()) throw new Insufficient_funds();
+        // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
+        else this.setBalance(this.getBalance()- amount);
     }
 
     public double getSimpleInterest(int years) {
