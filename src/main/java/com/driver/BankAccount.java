@@ -10,10 +10,11 @@ public class BankAccount {
     private double minBalance;
 
     public BankAccount(String name, double balance, double minBalance) {
-             if(balance < minBalance) throw new Insufficient_funds();
+             
              this.name = name;
              this.balance = balance;
              this.minBalance = minBalance;
+             if(balance < minBalance) throw new Insufficient_funds();
     }
 
     public String generateAccountNumber(int digits, int sum) throws Exception{
