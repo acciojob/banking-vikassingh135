@@ -1,5 +1,6 @@
 package com.driver;
 
+import com.driver.Exceptions.Insufficient_funds;
 import com.driver.Exceptions.valid_license_error;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,10 @@ public class CurrentAccount extends BankAccount{
 
     public CurrentAccount(String name, double balance, String tradeLicenseId) throws Exception {
         // minimum balance is 5000 by default. If balance is less than 5000, throw "Insufficient Balance" exception
-        super(name, balance, 5000);
+        if(balance < 5000) throw new Insufficient_funds();
+        this.setName(name);
+        this.setBalance(balance);
+        this.setMinBalance(5000);
         this.tradeLicenseId = tradeLicenseId;
     }
 

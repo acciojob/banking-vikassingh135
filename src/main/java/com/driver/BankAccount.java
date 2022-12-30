@@ -9,8 +9,13 @@ public class BankAccount {
     private double balance;
     private double minBalance;
 
+    public BankAccount() {
+    }
+    
+    
+
     public BankAccount(String name, double balance, double minBalance) {
-             if(balance < minBalance) throw new Insufficient_funds();
+//             if(balance < minBalance) throw new Insufficient_funds();
              this.name = name;
              this.balance = balance;
              this.minBalance = minBalance;
