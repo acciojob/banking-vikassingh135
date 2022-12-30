@@ -15,6 +15,8 @@ public class BankAccount {
              this.balance = balance;
              this.minBalance = minBalance;
     }
+    
+    
 
     public String generateAccountNumber(int digits, int sum) throws Exception{
         //Each digit of an account number can lie between 0 and 9 (both inclusive)
