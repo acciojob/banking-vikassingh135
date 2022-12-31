@@ -19,6 +19,7 @@ public class BankAccount {
              this.name = name;
              this.balance = balance;
              this.minBalance = minBalance;
+            if(this.balance < this.minBalance) throw new Insufficient_funds();
     }
 
     public String generateAccountNumber(int digits, int sum) throws Exception{
@@ -66,7 +67,7 @@ public class BankAccount {
     
     public void deposit(double amount) {
         //add amount to balance
-        balance += amount; 
+        this.balance += amount; 
     }
 
     public void withdraw(double amount) throws Exception {
