@@ -24,21 +24,14 @@ public class SavingsAccount extends BankAccount {
         return maxWithdrawalLimit;
     }
 
-    @Override
     public void withdraw(double amount) throws Exception {
         // Might throw the following errors:
         // 1. "Maximum Withdraw Limit Exceed" : If the amount exceeds maximum withdrawal limit
         // 2. "Insufficient Balance" : If the amount exceeds balance
-        if (amount < maxWithdrawalLimit) {
-            if (this.getBalance() - amount < this.getMinBalance()) {
-                throw new Insufficient_funds();
-            } // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
-            else {
-                double remAmount = this.getBalance() - amount;
-                this.setBalance(remAmount);
-            }
-        } else {
+        if (amount > maxWithdrawalLimit) {
             throw new max_withdraw_limit_exceeded();
+        } else {
+            withdraw(amount);
         }
     }
 
