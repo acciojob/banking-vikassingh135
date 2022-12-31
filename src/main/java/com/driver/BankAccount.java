@@ -9,17 +9,11 @@ public class BankAccount {
     private double balance;
     private double minBalance;
 
-    public BankAccount() {
-    }
-    
-    
-
     public BankAccount(String name, double balance, double minBalance) {
              if(balance < minBalance) throw new Insufficient_funds();
              this.name = name;
              this.balance = balance;
              this.minBalance = minBalance;
-//            if(this.balance < this.minBalance) throw new Insufficient_funds();
     }
 
     public String generateAccountNumber(int digits, int sum) throws Exception{
@@ -67,7 +61,7 @@ public class BankAccount {
     
     public void deposit(double amount) {
         //add amount to balance
-        this.balance += amount; 
+        balance += amount; 
     }
 
     public void withdraw(double amount) throws Exception {
